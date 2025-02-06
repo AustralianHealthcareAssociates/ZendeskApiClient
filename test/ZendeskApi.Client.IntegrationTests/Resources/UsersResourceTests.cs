@@ -5,14 +5,14 @@ using ZendeskApi.Client.Models;
 
 namespace ZendeskApi.Client.IntegrationTests.Resources
 {
-    public class SatisfactionRatingResourceTests : IClassFixture<ZendeskClientFactory>
+    public class SatisfactionRatingResourceTests : IClassFixture<TestHostFixture>
     {
         private readonly ZendeskClientFactory _clientFactory;
 
         public SatisfactionRatingResourceTests(
-            ZendeskClientFactory clientFactory)
+            TestHostFixture testHostFixture)
         {
-            _clientFactory = clientFactory;
+            _clientFactory = new ZendeskClientFactory(testHostFixture.HostBuilder);
         }
         
         [Fact]

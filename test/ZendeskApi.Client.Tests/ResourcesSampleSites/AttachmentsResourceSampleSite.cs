@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using ZendeskApi.Client.Models;
@@ -57,7 +58,7 @@ namespace ZendeskApi.Client.Tests.ResourcesSampleSites
 
                         resp.StatusCode = (int)HttpStatusCode.Created;
 
-                        resp.Headers.Add("Location", "https://localhost/api/v2/attachments/498483");
+                        resp.Headers.Append("Location", "https://localhost/api/v2/attachments/498483");
 
                         var state = req
                             .HttpContext

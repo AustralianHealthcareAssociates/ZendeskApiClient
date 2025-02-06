@@ -6,17 +6,18 @@ using ZendeskApi.Client.Models;
 
 namespace ZendeskApi.Client.IntegrationTests.Resources
 {
-    public class HelpCenterArticlesResourceTests : IClassFixture<ZendeskClientFactory>
+    public class HelpCenterArticlesResourceTests : IClassFixture<TestHostFixture>
+
     {
         private readonly ITestOutputHelper _output;
         private readonly ZendeskClientFactory _clientFactory;
 
         public HelpCenterArticlesResourceTests(
             ITestOutputHelper output,
-            ZendeskClientFactory clientFactory)
+            TestHostFixture testHostFixture)
         {
+            _clientFactory = new ZendeskClientFactory(testHostFixture.HostBuilder);
             _output = output;
-            _clientFactory = clientFactory;
         }
 
         [Fact]

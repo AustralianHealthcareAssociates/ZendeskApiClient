@@ -5,16 +5,17 @@ using ZendeskApi.Client.Models;
 
 namespace ZendeskApi.Client.IntegrationTests.Resources
 {
-    public class UserFieldsResourceTests : IClassFixture<ZendeskClientFactory>
+    public class UserFieldsResourceTests : IClassFixture<TestHostFixture>
     {
         private readonly ZendeskClientFactory _clientFactory;
 
         public UserFieldsResourceTests(
-            ZendeskClientFactory clientFactory)
+            TestHostFixture testHostFixture)
         {
-            _clientFactory = clientFactory;
+            _clientFactory = new ZendeskClientFactory(testHostFixture.HostBuilder);
+
         }
-        
+
         [Fact]
         public async Task GetAllAsync_WhenCalledWithCursorPagination_ShouldReturnUserFields()
         {

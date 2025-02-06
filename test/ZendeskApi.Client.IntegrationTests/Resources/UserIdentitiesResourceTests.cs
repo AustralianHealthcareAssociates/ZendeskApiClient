@@ -7,14 +7,14 @@ using ZendeskApi.Client.Responses;
 
 namespace ZendeskApi.Client.IntegrationTests.Resources
 {
-    public class UserIdentitiesResourceTests : IClassFixture<ZendeskClientFactory>
+    public class UserIdentitiesResourceTests : IClassFixture<TestHostFixture>
     {
         private readonly ZendeskClientFactory _clientFactory;
 
         public UserIdentitiesResourceTests(
-            ZendeskClientFactory clientFactory)
+            TestHostFixture testHostFixture)
         {
-            _clientFactory = clientFactory;
+            _clientFactory = new ZendeskClientFactory(testHostFixture.HostBuilder);
         }
         
         [Fact]

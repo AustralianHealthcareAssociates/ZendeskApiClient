@@ -11,17 +11,18 @@ using ZendeskApi.Client.Responses;
 
 namespace ZendeskApi.Client.IntegrationTests.Resources
 {
-    public class OrganizationMembershipsResourceTests : IClassFixture<ZendeskClientFactory>
+    public class OrganizationMembershipsResourceTests : IClassFixture<TestHostFixture>
     {
         private readonly ITestOutputHelper _output;
         private readonly ZendeskClientFactory _clientFactory;
 
         public OrganizationMembershipsResourceTests(
             ITestOutputHelper output,
-            ZendeskClientFactory clientFactory)
+            TestHostFixture testHostFixture)
         {
+            _clientFactory = new ZendeskClientFactory(testHostFixture.HostBuilder);
+
             _output = output;
-            _clientFactory = clientFactory;
         }
 
         [Fact]

@@ -8,7 +8,7 @@ using ZendeskApi.Client.Models;
 
 namespace ZendeskApi.Client.IntegrationTests.Resources
 {
-    public class RequestsResourceTests : IClassFixture<ZendeskClientFactory>
+    public class RequestsResourceTests : IClassFixture<TestHostFixture>
     {
         private readonly ITestOutputHelper _output;
         private readonly ZendeskClientFactory _clientFactory;
@@ -16,11 +16,11 @@ namespace ZendeskApi.Client.IntegrationTests.Resources
 
         public RequestsResourceTests(
             ITestOutputHelper output,
-            ZendeskClientFactory clientFactory)
+           TestHostFixture testHostFixture)
         {
+            _clientFactory = new ZendeskClientFactory(testHostFixture.HostBuilder);
             _output = output;
-            _clientFactory = clientFactory;
-            cursorPaginatedIteratorFactory = new CursorPaginatedIteratorFactory(clientFactory);
+            cursorPaginatedIteratorFactory = new CursorPaginatedIteratorFactory(_clientFactory);
         }
 
         [Fact]

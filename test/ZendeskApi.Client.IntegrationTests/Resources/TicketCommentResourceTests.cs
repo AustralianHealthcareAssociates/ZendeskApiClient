@@ -6,14 +6,14 @@ using ZendeskApi.Client.Requests;
 
 namespace ZendeskApi.Client.IntegrationTests.Resources
 {
-    public class TicketCommentResourceTests : IClassFixture<ZendeskClientFactory>
+    public class TicketCommentResourceTests : IClassFixture<TestHostFixture>
     {
         private readonly ZendeskClientFactory _clientFactory;
 
         public TicketCommentResourceTests(
-            ZendeskClientFactory clientFactory)
+            TestHostFixture testHostFixture)
         {
-            _clientFactory = clientFactory;
+            _clientFactory = new ZendeskClientFactory(testHostFixture.HostBuilder);
         }
 
         [Fact]
