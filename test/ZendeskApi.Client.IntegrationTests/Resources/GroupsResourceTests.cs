@@ -7,16 +7,16 @@ using ZendeskApi.Client.Requests;
 
 namespace ZendeskApi.Client.IntegrationTests.Resources
 {
-    public class GroupsResourceTests : IClassFixture<ZendeskClientFactory>
+    public class GroupsResourceTests : IClassFixture<TestHostFixture>
     {
         private readonly ZendeskClientFactory _clientFactory;
 
-        public GroupsResourceTests(
-            ZendeskClientFactory clientFactory)
+        public GroupsResourceTests(TestHostFixture testHostFixture)
         {
-            _clientFactory = clientFactory;
+            _clientFactory = new ZendeskClientFactory(testHostFixture.HostBuilder);
+
         }
-        
+
         [Fact]
         public async Task GetAllAsync_WhenCalledWithCursorPagination_ShouldReturnGroups()
         {

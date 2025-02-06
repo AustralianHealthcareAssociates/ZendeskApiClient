@@ -12,12 +12,12 @@ namespace ZendeskApi.Client.IntegrationTests.Resources
         private readonly ZendeskClientFactory _clientFactory;
 
         public TagsResourceTest(
-            ZendeskClientFactory clientFactory)
+            TestHostFixture testHostFixture)
         {
-            _clientFactory = clientFactory;
+            _clientFactory = new ZendeskClientFactory(testHostFixture.HostBuilder);
         }
 
-        
+
         [Fact]
         public async Task GetAllAsync_WhenCalledWithCursorPagination_ShouldBePaginatable()
         {

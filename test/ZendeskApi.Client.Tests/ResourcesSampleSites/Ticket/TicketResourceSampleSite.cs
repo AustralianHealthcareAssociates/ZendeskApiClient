@@ -32,17 +32,11 @@ namespace ZendeskApi.Client.Tests.ResourcesSampleSites
         private static void ConfigureWebHost(WebHostBuilder builder)
         {
             builder
-                .ConfigureServices(services => {
-                    services.AddSingleton(_ => new MapperConfiguration(cfg =>
-                    {
-                        cfg.CreateMap<TicketCreateRequest, TicketResponse>()
-                            .ForMember(r => r.Ticket, r => r.MapFrom(req => req));
-                        cfg.CreateMap<TicketUpdateRequest, TicketResponse>()
-                            .ForMember(r => r.Ticket, r => r.MapFrom(req => req));
-                        cfg.CreateMap<TicketCreateRequest, Ticket>();
-                        cfg.CreateMap<TicketUpdateRequest, Ticket>();
-                    }).CreateMapper());
+                .ConfigureServices(services =>
+                {
+                    services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()).AddLogging();
                 });
+
         }
 
         private static void PopulateState(TicketResourceState state)
@@ -346,5 +340,53 @@ namespace ZendeskApi.Client.Tests.ResourcesSampleSites
                 });
             }
         }
+    }
+}
+public class TicketMappingProfile : Profile
+{
+    public TicketMappingProfile()
+    {
+        CreateMap<TicketCreateRequest, Ticket>().ReverseMap();
+
+        CreateMap<TicketCreateRequest, TicketResponse>()
+            .ForPath(dest => dest.Ticket.BrandId, opt => opt.MapFrom(src => src.BrandId))
+            .ForPath(dest => dest.Ticket.FormId, opt => opt.MapFrom(src => src.FormId))
+            .ForPath(dest => dest.Ticket.Due, opt => opt.MapFrom(src => src.Due))
+            .ForPath(dest => dest.Ticket.ProblemId, opt => opt.MapFrom(src => src.ProblemId))
+            .ForPath(dest => dest.Ticket.ForumTopicId, opt => opt.MapFrom(src => src.ForumTopicId))
+            .ForPath(dest => dest.Ticket.ExternalId, opt => opt.MapFrom(src => src.ExternalId))
+            .ForPath(dest => dest.Ticket.Tags, opt => opt.MapFrom(src => src.Tags))
+            .ForPath(dest => dest.Ticket.Status, opt => opt.MapFrom(src => src.Status))
+            .ForPath(dest => dest.Ticket.Priority, opt => opt.MapFrom(src => src.Priority))
+            .ForPath(dest => dest.Ticket.Type, opt => opt.MapFrom(src => src.Type))
+            .ForPath(dest => dest.Ticket.CollaboratorIds, opt => opt.MapFrom(src => src.CollaboratorIds))
+            .ForPath(dest => dest.Ticket.GroupId, opt => opt.MapFrom(src => src.GroupId))
+            .ForPath(dest => dest.Ticket.AssigneeId, opt => opt.MapFrom(src => src.AssigneeId))
+            .ForPath(dest => dest.Ticket.SubmitterId, opt => opt.MapFrom(src => src.SubmitterId))
+            .ForPath(dest => dest.Ticket.RequesterId, opt => opt.MapFrom(src => src.RequesterId))
+            .ForPath(dest => dest.Ticket.Subject, opt => opt.MapFrom(src => src.Subject))
+            .ForPath(dest => dest.Ticket.OrganisationId, opt => opt.MapFrom(src => src.OrganisationId));
+        
+        CreateMap<TicketUpdateRequest, Ticket>().ReverseMap();
+
+        CreateMap<TicketUpdateRequest, TicketResponse>()
+            .ForPath(dest => dest.Ticket.BrandId, opt => opt.MapFrom(src => src.BrandId))
+            .ForPath(dest => dest.Ticket.FormId, opt => opt.MapFrom(src => src.FormId))
+            .ForPath(dest => dest.Ticket.Due, opt => opt.MapFrom(src => src.Due))
+            .ForPath(dest => dest.Ticket.ProblemId, opt => opt.MapFrom(src => src.ProblemId))
+            .ForPath(dest => dest.Ticket.ExternalId, opt => opt.MapFrom(src => src.ExternalId))
+            .ForPath(dest => dest.Ticket.Tags, opt => opt.MapFrom(src => src.Tags))
+            .ForPath(dest => dest.Ticket.Status, opt => opt.MapFrom(src => src.Status))
+            .ForPath(dest => dest.Ticket.Priority, opt => opt.MapFrom(src => src.Priority))
+            .ForPath(dest => dest.Ticket.Type, opt => opt.MapFrom(src => src.Type))
+            .ForPath(dest => dest.Ticket.CollaboratorIds, opt => opt.MapFrom(src => src.CollaboratorIds))
+            .ForPath(dest => dest.Ticket.GroupId, opt => opt.MapFrom(src => src.GroupId))
+            .ForPath(dest => dest.Ticket.AssigneeId, opt => opt.MapFrom(src => src.AssigneeId))
+            .ForPath(dest => dest.Ticket.RequesterId, opt => opt.MapFrom(src => src.RequesterId))
+            .ForPath(dest => dest.Ticket.Subject, opt => opt.MapFrom(src => src.Subject))
+            .ForPath(dest => dest.Ticket.Id, opt => opt.MapFrom(src => src.Id))
+            .ForPath(dest => dest.Ticket.OrganisationId, opt => opt.MapFrom(src => src.OrganisationId))
+            .ForPath(dest => dest.Ticket.SharingAgreementIds, opt => opt.MapFrom(src => src.SharingAgreementIds));
+
     }
 }

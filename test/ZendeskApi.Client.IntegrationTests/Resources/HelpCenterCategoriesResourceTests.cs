@@ -7,17 +7,17 @@ using ZendeskApi.Client.Models;
 #pragma warning disable CS0618
 namespace ZendeskApi.Client.IntegrationTests.Resources
 {
-    public class HelpCenterCategoriesResourceTests : IClassFixture<ZendeskClientFactory>
+    public class HelpCenterCategoriesResourceTests : IClassFixture<TestHostFixture>
     {
         private readonly ITestOutputHelper _output;
         private readonly ZendeskClientFactory _clientFactory;
 
         public HelpCenterCategoriesResourceTests(
             ITestOutputHelper output,
-            ZendeskClientFactory clientFactory)
+            TestHostFixture testHostFixture)
         {
+            _clientFactory = new ZendeskClientFactory(testHostFixture.HostBuilder);
             _output = output;
-            _clientFactory = clientFactory;
         }
 
         [Fact]

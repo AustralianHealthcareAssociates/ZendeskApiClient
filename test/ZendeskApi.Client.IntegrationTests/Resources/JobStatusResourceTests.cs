@@ -6,14 +6,14 @@ using ZendeskApi.Client.Models;
 
 namespace ZendeskApi.Client.IntegrationTests.Resources
 {
-    public class JobStatusResourceTests : IClassFixture<ZendeskClientFactory>
+    public class JobStatusResourceTests : IClassFixture<TestHostFixture>
     {
         private readonly ZendeskClientFactory clientFactory;
         private readonly CursorPaginatedIteratorFactory cursorPaginatedIteratorFactory;
         public JobStatusResourceTests(
-            ZendeskClientFactory _clientFactory)
+            TestHostFixture testHostFixture)
         {
-            clientFactory = _clientFactory;
+            clientFactory = new ZendeskClientFactory(testHostFixture.HostBuilder);
             cursorPaginatedIteratorFactory = new CursorPaginatedIteratorFactory(clientFactory);
         }
 

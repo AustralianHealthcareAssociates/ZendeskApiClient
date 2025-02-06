@@ -1,5 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Xunit;
 using ZendeskApi.Client.IntegrationTests.Factories;
 using ZendeskApi.Client.Models;
@@ -7,15 +9,14 @@ using CursorPaginatedIteratorFactory = ZendeskApi.Client.IntegrationTests.Factor
 
 namespace ZendeskApi.Client.IntegrationTests.CBPSupport
 {
-    public class CBPSupportTests : IClassFixture<ZendeskClientFactory>
+    public class CBPSupportTests : IClassFixture<TestHostFixture>
     {
         private readonly ZendeskClientFactory clientFactory;
         private readonly CursorPaginatedIteratorFactory cursorPaginatedIteratorFactory;
 
-        public CBPSupportTests(
-            ZendeskClientFactory _clientFactory)
+        public CBPSupportTests(TestHostFixture testHostFixture)
         {
-            clientFactory = _clientFactory;
+            clientFactory = new ZendeskClientFactory(testHostFixture.HostBuilder);
             cursorPaginatedIteratorFactory = new Factories.CursorPaginatedIteratorFactory(clientFactory);
         }
 
