@@ -1,12 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project=".\..\ZendeskApi.Build\ZendeskApi.Commons.props" />
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net8.0</TargetFrameworks>
-    <Description>A Zendesk Api Client for use with the ZendeskApi v2</Description>
+    <PackageId>ZendeskApi.AHAFork</PackageId>
+    <Description>A Zendesk Api Client for use with the ZendeskApi. Forked from ZendeskApi orignal package</Description>
     <LangVersion>latest</LangVersion>
     <UserSecretsId>306e9b1d-19a6-4018-9c27-ba90c246023b</UserSecretsId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +18,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
     <PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />
+    <None Include="docs\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
