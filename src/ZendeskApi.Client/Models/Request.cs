@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -50,6 +50,10 @@ namespace ZendeskApi.Client.Models
 
         [JsonProperty("requester_id")]
         public long? RequesterId { get; set; }
+
+        [JsonProperty("requester")]
+        public TicketRequester Requester { get; set; }
+
 
         [JsonProperty("submitter_id")]
         public long? SubmitterId { get; set; }

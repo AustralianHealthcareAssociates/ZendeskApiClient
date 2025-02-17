@@ -202,6 +202,21 @@ namespace ZendeskApi.Client.Resources
                 .UserResponse;
         }
 
+        public async Task<UserResponse> GetByEmailAsync(
+            string userEmail,
+            CancellationToken cancellationToken = default)
+        {
+            var response = await GetWithNotFoundCheckAsync<SingleUserResponse>(
+                $"{ResourceUri}/autocomplete.json?name={userEmail}",
+                "show-users",
+                $"GetByEmailAsync({userEmail})",
+                $"UserResponse {userEmail} not found",
+                cancellationToken: cancellationToken);
+
+            return response?
+                .UserResponse;
+        }
+
         public async Task<UsersListResponse> GetAllAsync(
             long[] userIds,
             PagerParameters pager = null,

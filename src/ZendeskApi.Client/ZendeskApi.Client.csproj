@@ -4,9 +4,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1;net8.0</TargetFrameworks>
-    <PackageId>ZendeskApi.AHAFork</PackageId>
-    <Description>A Zendesk Api Client for use with the ZendeskApi. Forked from ZendeskApi orignal package</Description>
+    <PackageId>ZendeskApiClient.AHAFork</PackageId>
+    <Description>A Zendesk Api Client for use with the ZendeskApiClient. Forked from ZendeskApi orignal package</Description>
     <LangVersion>latest</LangVersion>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Just Eat, AHA, various contributers to Just Eat's original repository</Authors>
     <UserSecretsId>306e9b1d-19a6-4018-9c27-ba90c246023b</UserSecretsId>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
@@ -18,7 +20,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Reflection" Version="4.3.0" />
     <PackageReference Include="System.Reflection.Extensions" Version="4.3.0" />
-    <None Include="docs\README.md" Pack="true" PackagePath="\"/>
+    <None Include="docs\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
