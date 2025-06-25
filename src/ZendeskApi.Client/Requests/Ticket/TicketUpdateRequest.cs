@@ -93,10 +93,22 @@ namespace ZendeskApi.Client.Requests
         public TicketStatus? Status { get; set; }
 
         /// <summary>
-        /// An array of tags to add to the ticket. Note that the tags replace any existing tags. To keep existing tags, see <see href="https://developer.zendesk.com/rest_api/docs/core/tickets#updating-tag-lists">Updating tag lists</see>
+        /// An array of tags to assign to the ticket. Note that the tags replace any existing tags. To keep existing tags, use AdditionalTags property instead.</see>
         /// </summary>
         [JsonProperty("tags")]
         public IList<string> Tags { get; set; }
+
+        /// <summary>
+        /// An array of tags to add to the ticket.
+        /// </summary>
+        [JsonProperty("additional_tags")]
+        public IList<string> AdditionalTags { get; set; }
+
+        /// <summary>
+        /// An array of tags to remove from the ticket's existing tags collection.
+        /// </summary>
+        [JsonProperty("remove_tags")]
+        public IList<string> RemoveTags { get; set; }
 
         /// <summary>
         /// An ID to link tickets to local records
