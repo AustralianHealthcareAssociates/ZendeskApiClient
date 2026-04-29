@@ -74,6 +74,9 @@ namespace ZendeskApi.Client.Requests
         [JsonProperty("additional_collaborators")]
         public IList<ICollaboratorRequest> AdditionalCollaborators { get; set; }
 
+        [JsonProperty("email_ccs")]
+        public IList<EmailCcs> EmailCcs { get; set; }
+
         /// <summary>
         /// Allowed values are <c>problem</c>, <c>incident</c>, <c>question</c>, or <c>task</c>
         /// </summary>
