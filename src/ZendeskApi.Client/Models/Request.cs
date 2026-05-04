@@ -54,7 +54,6 @@ namespace ZendeskApi.Client.Models
         [JsonProperty("requester")]
         public TicketRequester Requester { get; set; }
 
-
         [JsonProperty("submitter_id")]
         public long? SubmitterId { get; set; }
 
@@ -66,6 +65,9 @@ namespace ZendeskApi.Client.Models
 
         [JsonProperty("collaborator_ids")]
         public List<long> CollaboratorIds { get; set; }
+
+        [JsonProperty("email_ccs")]
+        public IList<EmailCcs> EmailCcs { get; set; }
 
         [JsonProperty("group_id")]
         public long? GroupId { get; set; }

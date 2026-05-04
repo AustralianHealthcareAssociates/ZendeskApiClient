@@ -51,6 +51,9 @@ namespace ZendeskApi.Client.Requests
 
         [JsonProperty("collaborators")]
         public IList<ICollaboratorRequest> Collaborators { get; set; }
+
+        [JsonProperty("email_ccs")] 
+        public IList<EmailCcs> EmailCcs { get; set; }
             
         [JsonProperty("type")]
         public TicketType? Type { get; set; }
