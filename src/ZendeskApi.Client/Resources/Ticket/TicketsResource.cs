@@ -213,6 +213,18 @@ namespace ZendeskApi.Client.Resources
                 cancellationToken: cancellationToken);
         }
 
+        public async Task<UserCcs> GetUserCcsAsync(
+            long ticketId,
+            CancellationToken cancellationToken = default)
+        {
+            return await GetWithNotFoundCheckAsync<UserCcs>(
+                $"{ResourceUri}/{ticketId}/email_ccs",
+                "email-ccs",
+                $"GetAsync({ticketId})",
+                $"TicketResponse {ticketId} not found",
+                cancellationToken: cancellationToken);
+        }
+
         [Obsolete("Use `GetAllAsync` instead.")]
         public async Task<IPagination<Ticket>> GetAsync(
             long[] ticketIds, 
