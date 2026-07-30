@@ -220,8 +220,8 @@ namespace ZendeskApi.Client.Resources
             return await GetWithNotFoundCheckAsync<UserCcs>(
                 $"{ResourceUri}/{ticketId}/email_ccs",
                 "email-ccs",
-                $"GetAsync({ticketId})",
-                $"TicketResponse {ticketId} not found",
+                $"GetUserCcsAsync({ticketId})",
+                $"Email CCs for ticket {ticketId} not found",
                 cancellationToken: cancellationToken);
         }
 

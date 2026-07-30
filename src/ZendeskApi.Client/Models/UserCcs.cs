@@ -12,7 +12,7 @@ namespace ZendeskApi.Client.Models
     public class UserCc
     {
         [JsonProperty("id")]
-        public string UserId { get; set; }
+        public long Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
