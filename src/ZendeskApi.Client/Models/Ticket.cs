@@ -202,6 +202,11 @@ namespace ZendeskApi.Client.Models
         [JsonProperty("updated_at")]
         public DateTime UpdatedAt { get; set; }
 
+        /// <summary>
+        /// Email CCs - write only 
+        /// </summary>
+        [JsonProperty("email_ccs")]
+        public IList<EmailCcs> EmailCcs { get; set; }
 
         [JsonProperty("result_type")]
         string ResultType => "ticket";

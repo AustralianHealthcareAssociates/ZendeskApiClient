@@ -92,6 +92,10 @@ namespace ZendeskApi.Client.Resources
             long ticketId,
             CancellationToken cancellationToken = default);
 
+        Task<UserCcs> GetUserCcsAsync(
+            long ticketId,
+            CancellationToken cancellationToken = default);
+
         Task<IPagination<Ticket>> GetAllAsync(
             long[] ticketIds, 
             PagerParameters pager = null,
