@@ -14,6 +14,9 @@ namespace ZendeskApi.Client.Models
         [JsonProperty("id")]
         public string UserId { get; set; }
 
+        [JsonProperty("email")]
+        public string UserEmail { get; set; }
+
         [JsonProperty("name")]
         public string Name { get; set; }
     }
